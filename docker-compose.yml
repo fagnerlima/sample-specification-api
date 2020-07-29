@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  sample-specification-db:
+    container_name: sample-db
+    image: postgres:10-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: sample-specification
+      POSTGRES_USER: sample
+      POSTGRES_PASSWORD: sample
+    volumes:
+      - ./.docker-volumes/sample-specification-db:/var/lib/postgresql/data
+  sample-specification-api:
+    container_name: sample-specification-api
+    image: sample-specification-api
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://sample-specification-db:5432/sample-specification
+      DB_USER: sample
+      DB_PASSWORD: sample
+    links:
+      - sample-specification-db
+    depends_on:
+      - sample-specification-db
