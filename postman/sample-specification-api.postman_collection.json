@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "a8693e0d-174d-43b3-a911-bc0fec793bf2",
+		"name": "sample-specification-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "/tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks?page=0&size=10&sort=period.startDate,asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "period.startDate,asc"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2020-09-03",
+									"disabled": true
+								},
+								{
+									"key": "period.startDate",
+									"value": "2020-09-05",
+									"disabled": true
+								},
+								{
+									"key": "period.endDate",
+									"value": "2020-09-10",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "birthday",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "PENDING",
+									"disabled": true
+								},
+								{
+									"key": "tagId",
+									"value": "1,5",
+									"disabled": true
+								},
+								{
+									"key": "descriptionOrTag.description",
+									"value": "freelancer",
+									"disabled": true
+								},
+								{
+									"key": "descriptionOrTag.tagDescription",
+									"value": "study",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6b6cc398-49d1-4290-b964-392935ab236d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "326f8840-c615-4193-9630-9dc46e7d164c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "53bfc0a6-1352-4367-b113-e0d225be9e51",
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
