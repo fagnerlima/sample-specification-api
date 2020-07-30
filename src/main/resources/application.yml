@@ -18,3 +18,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
   flyway:
     schemas: public
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
