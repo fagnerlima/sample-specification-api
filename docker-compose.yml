@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   sample-specification-db:
-    container_name: sample-db
+    container_name: sample-specification-db
     image: postgres:10-alpine
     restart: always
     ports:
