@@ -25,8 +25,8 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Task>> findAll(TaskFilter filterRequestTO, Pageable pageable) {
-        Specification<Task> specification = new SpecBuilder<Task>().add(filterRequestTO).build();
+    public ResponseEntity<Page<Task>> findAll(TaskFilter filter, Pageable pageable) {
+        Specification<Task> specification = new SpecBuilder<Task>().add(filter).build();
         Page<Task> taskPage = taskService.findAll(specification, pageable);
 
         return ResponseEntity.ok(taskPage);
