@@ -14,7 +14,7 @@ services:
       - ./.docker-volumes/sample-specification-db:/var/lib/postgresql/data
   sample-specification-api:
     container_name: sample-specification-api
-    image: sample-specification-api
+    image: fagnerlima/sample-specification-api:0.1.0
     restart: always
     ports:
       - "8080:8080"
