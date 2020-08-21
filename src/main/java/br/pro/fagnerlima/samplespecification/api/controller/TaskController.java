@@ -32,4 +32,11 @@ public class TaskController {
         return ResponseEntity.ok(taskPage);
     }
 
+    @GetMapping(params = "jpa_criteria")
+    public ResponseEntity<Page<Task>> findAllWithJpaCriteria(TaskFilter filter, Pageable pageable) {
+        Page<Task> taskPage = taskService.findAllWithJpaCriteria(filter, pageable);
+
+        return ResponseEntity.ok(taskPage);
+    }
+
 }
