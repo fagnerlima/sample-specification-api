@@ -46,6 +46,7 @@ public class TaskRepositoryImpl implements TaskRepositoryQuery {
         CriteriaQuery<Task> query = builder.createQuery(Task.class);
         Root<Task> root = query.from(Task.class);
 
+        query.distinct(true);
         query.where(createRestrictions(filter, builder, root));
 
         if (pageable.getSort() != null) {
