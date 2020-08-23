@@ -63,43 +63,43 @@ public class TaskRepositoryImpl implements TaskRepositoryQuery {
         List<Predicate> predicates = new ArrayList<>();
 
         if (filter.getId() != null) {
-            predicates.add(builder.equal(root.get(Task_.id), filter.getId()));
+            predicates.add(builder.equal(root.get(Task_.ID), filter.getId()));
         }
 
         if (filter.getDate() != null) {
             predicates.add(builder.between(builder.literal(filter.getDate()),
-                    root.get(Task_.period).get(Period_.startDate),
-                    root.get(Task_.period).get(Period_.endDate)));
+                    root.get(Task_.PERIOD).get(Period_.START_DATE),
+                    root.get(Task_.PERIOD).get(Period_.END_DATE)));
         }
 
         if (filter.getPeriod() != null && filter.getPeriod().getStartDate() != null && filter.getPeriod().getEndDate() != null) {
             LocalDate startDate = filter.getPeriod().getStartDate();
             LocalDate endDate = filter.getPeriod().getEndDate();
             predicates.add(builder.or(
-                    builder.between(root.get(Task_.period).get(Period_.startDate), startDate, endDate),
-                    builder.between(root.get(Task_.period).get(Period_.endDate), startDate, endDate)));
+                    builder.between(root.get(Task_.PERIOD).get(Period_.START_DATE), startDate, endDate),
+                    builder.between(root.get(Task_.PERIOD).get(Period_.END_DATE), startDate, endDate)));
         }
 
         if (!StringUtils.isBlank(filter.getDescription())) {
-            predicates.add(createLikeUnaccent(builder, root.get(Task_.description), filter.getDescription()));
+            predicates.add(createLikeUnaccent(builder, root.get(Task_.DESCRIPTION), filter.getDescription()));
         }
 
         if (filter.getStatus() != null) {
-            predicates.add(builder.equal(root.get(Task_.status), filter.getStatus()));
+            predicates.add(builder.equal(root.get(Task_.STATUS), filter.getStatus()));
         }
 
         if (filter.getTagId() != null) {
-            Join<Task, Tag> tagJoin = root.join(Task_.tags);
-            In<Long> tagPredicate = builder.in(tagJoin.get(Tag_.id));
+            Join<Task, Tag> tagJoin = root.join(Task_.TAGS);
+            In<Long> tagPredicate = builder.in(tagJoin.get(Tag_.ID));
             filter.getTagId().stream().forEach(id -> tagPredicate.value(id));
             predicates.add(tagPredicate);
         }
 
         if (filter.getDescriptionOrTag() != null) {
-            Join<Task, Tag> tagJoin = root.join(Task_.tags);
+            Join<Task, Tag> tagJoin = root.join(Task_.TAGS);
             predicates.add(builder.or(
-                    createLikeUnaccent(builder, root.get(Task_.description), filter.getDescriptionOrTag().getDescription()),
-                    createLikeUnaccent(builder, tagJoin.get(Tag_.description), filter.getDescriptionOrTag().getTagDescription())));
+                    createLikeUnaccent(builder, root.get(Task_.DESCRIPTION), filter.getDescriptionOrTag().getDescription()),
+                    createLikeUnaccent(builder, tagJoin.get(Tag_.DESCRIPTION), filter.getDescriptionOrTag().getTagDescription())));
         }
 
         return predicates.toArray(Predicate[]::new);
