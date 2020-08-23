@@ -1,4 +1,4 @@
-CREATE EXTENSION unaccent;
+CREATE EXTENSION IF NOT EXISTS unaccent;
 
 CREATE TABLE tag (
   id SERIAL,
@@ -49,7 +49,6 @@ INSERT INTO tag_task VALUES
   (5, 1),
   (1, 2),
   (6, 3),
-  (1, 4),
   (6, 5),
   (2, 6),
   (2, 7),
