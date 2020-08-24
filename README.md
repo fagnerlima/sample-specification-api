@@ -37,4 +37,4 @@ The OpenAPI documentation will be available at http://localhost:8080/swagger-ui.
 
 ### Postman Collection
 
-The Postman collection is available [here](/postman/open-planner-api.postman_collection.json).
+The Postman collection is available [here](/postman/sample-specification-api.postman_collection.json).
