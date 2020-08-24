@@ -1,8 +1,10 @@
-package br.pro.fagnerlima.samplespecification.api.domain.model;
+package br.pro.fagnerlima.samplespecification.api.domain.model.tag;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import br.pro.fagnerlima.samplespecification.api.domain.model.shared.BaseEntity;
 
 @Entity
 @Table(name = "tag")

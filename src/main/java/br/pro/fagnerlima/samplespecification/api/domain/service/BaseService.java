@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-import br.pro.fagnerlima.samplespecification.api.domain.model.BaseEntity;
+import br.pro.fagnerlima.samplespecification.api.domain.model.shared.BaseEntity;
 
 public interface BaseService<T extends BaseEntity> {
 

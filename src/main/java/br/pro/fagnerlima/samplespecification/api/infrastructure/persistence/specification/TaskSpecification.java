@@ -4,9 +4,9 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.github.fagnerlima.springspecificationtools.SpecFactory;
 
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task.Status;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task_;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task.Status;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task_;
 
 public class TaskSpecification {
 

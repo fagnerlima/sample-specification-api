@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.domain.model;
+package br.pro.fagnerlima.samplespecification.api.domain.model.task;
 
 import java.util.Set;
 
@@ -15,6 +15,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
+import br.pro.fagnerlima.samplespecification.api.domain.model.shared.BaseEntity;
+import br.pro.fagnerlima.samplespecification.api.domain.model.shared.Period;
+import br.pro.fagnerlima.samplespecification.api.domain.model.tag.Tag;
 
 @Entity
 @Table(name = "task")

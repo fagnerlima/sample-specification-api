@@ -24,12 +24,12 @@ import org.springframework.data.domain.Sort.Direction;
 
 import com.github.fagnerlima.springspecificationtools.util.StringUtils;
 
-import br.pro.fagnerlima.samplespecification.api.domain.model.Period_;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Tag;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Tag_;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task_;
-import br.pro.fagnerlima.samplespecification.api.presentation.dto.TaskFilter;
+import br.pro.fagnerlima.samplespecification.api.domain.model.shared.Period_;
+import br.pro.fagnerlima.samplespecification.api.domain.model.tag.Tag;
+import br.pro.fagnerlima.samplespecification.api.domain.model.tag.Tag_;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task_;
+import br.pro.fagnerlima.samplespecification.api.presentation.dto.task.TaskFilter;
 
 public class TaskRepositoryImpl implements TaskRepositoryQuery {
 

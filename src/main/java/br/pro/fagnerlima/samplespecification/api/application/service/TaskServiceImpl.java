@@ -4,12 +4,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task.Status;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task.Status;
 import br.pro.fagnerlima.samplespecification.api.domain.service.TaskService;
 import br.pro.fagnerlima.samplespecification.api.infrastructure.persistence.repository.TaskRepository;
 import br.pro.fagnerlima.samplespecification.api.infrastructure.persistence.specification.TaskSpecification;
-import br.pro.fagnerlima.samplespecification.api.presentation.dto.TaskFilter;
+import br.pro.fagnerlima.samplespecification.api.presentation.dto.task.TaskFilter;
 
 @Service
 public class TaskServiceImpl extends BaseServiceImpl<Task> implements TaskService {

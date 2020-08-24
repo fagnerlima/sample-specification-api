@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.pro.fagnerlima.samplespecification.api.domain.model.BaseEntity;
+import br.pro.fagnerlima.samplespecification.api.domain.model.shared.BaseEntity;
 import br.pro.fagnerlima.samplespecification.api.domain.service.BaseService;
 import br.pro.fagnerlima.samplespecification.api.infrastructure.persistence.repository.BaseRepository;
 

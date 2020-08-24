@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.domain.model;
+package br.pro.fagnerlima.samplespecification.api.domain.model.shared;
 
 import java.io.Serializable;
 import java.time.LocalDate;

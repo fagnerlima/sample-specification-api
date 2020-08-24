@@ -3,8 +3,8 @@ package br.pro.fagnerlima.samplespecification.api.infrastructure.persistence.rep
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
-import br.pro.fagnerlima.samplespecification.api.presentation.dto.TaskFilter;
+import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task;
+import br.pro.fagnerlima.samplespecification.api.presentation.dto.task.TaskFilter;
 
 public interface TaskRepositoryQuery {
 

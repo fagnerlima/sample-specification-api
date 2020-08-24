@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.presentation.dto;
+package br.pro.fagnerlima.samplespecification.api.presentation.dto.task;
 
 import java.io.Serializable;
 
