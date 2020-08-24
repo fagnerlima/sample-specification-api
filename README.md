@@ -27,7 +27,9 @@ By default, the application will be available at http://localhost:8080.
 
 ### UML
 
-- [Class Diagram](/docs/uml/sample-specification-api_class-diagram.jpg)
+#### Class Diagram
+
+![Class Diagram](/docs/uml/sample-specification-api_class-diagram.jpg)
 
 ### OpenAPI Documentation
 
