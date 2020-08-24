@@ -1,12 +1,12 @@
-package br.pro.fagnerlima.samplespecification.api.specification;
+package br.pro.fagnerlima.samplespecification.api.infrastructure.persistence.specification;
 
 import org.springframework.data.jpa.domain.Specification;
 
 import com.github.fagnerlima.springspecificationtools.SpecFactory;
 
-import br.pro.fagnerlima.samplespecification.api.model.Task;
-import br.pro.fagnerlima.samplespecification.api.model.Task.Status;
-import br.pro.fagnerlima.samplespecification.api.model.Task_;
+import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
+import br.pro.fagnerlima.samplespecification.api.domain.model.Task.Status;
+import br.pro.fagnerlima.samplespecification.api.domain.model.Task_;
 
 public class TaskSpecification {
 

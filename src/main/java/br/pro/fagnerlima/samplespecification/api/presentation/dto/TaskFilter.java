@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.dto;
+package br.pro.fagnerlima.samplespecification.api.presentation.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,7 +15,7 @@ import com.github.fagnerlima.springspecificationtools.annotation.SpecGroup;
 import com.github.fagnerlima.springspecificationtools.annotation.SpecJoin;
 import com.github.fagnerlima.springspecificationtools.annotation.SpecPeriod;
 
-import br.pro.fagnerlima.samplespecification.api.model.Task;
+import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
 
 @SpecEntity(Task.class)
 public class TaskFilter implements Serializable {

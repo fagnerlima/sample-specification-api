@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.dto;
+package br.pro.fagnerlima.samplespecification.api.presentation.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;

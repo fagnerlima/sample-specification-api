@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.configuration;
+package br.pro.fagnerlima.samplespecification.api.application.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

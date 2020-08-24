@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.controller;
+package br.pro.fagnerlima.samplespecification.api.application.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.fagnerlima.springspecificationtools.SpecBuilder;
 
-import br.pro.fagnerlima.samplespecification.api.dto.TaskFilter;
-import br.pro.fagnerlima.samplespecification.api.model.Task;
-import br.pro.fagnerlima.samplespecification.api.model.Task.Status;
-import br.pro.fagnerlima.samplespecification.api.service.TaskService;
+import br.pro.fagnerlima.samplespecification.api.application.service.TaskServiceImpl;
+import br.pro.fagnerlima.samplespecification.api.domain.model.Task;
+import br.pro.fagnerlima.samplespecification.api.domain.model.Task.Status;
+import br.pro.fagnerlima.samplespecification.api.presentation.dto.TaskFilter;
 
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
 
-    private TaskService taskService;
+    private TaskServiceImpl taskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskServiceImpl taskService) {
         this.taskService = taskService;
     }
 

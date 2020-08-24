@@ -16,8 +16,11 @@
 
   <properties>
     <java.version>11</java.version>
+    <resource.delimiter>^</resource.delimiter>
     <modelmapper.version>2.3.5</modelmapper.version>
     <spring-specification-tools.version>0.3.1</spring-specification-tools.version>
+    <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+    <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
   </properties>
 
   <dependencies>
@@ -51,6 +54,16 @@
       <groupId>com.github.fagnerlima</groupId>
       <artifactId>spring-specification-tools</artifactId>
       <version>${spring-specification-tools.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>${springfox-swagger2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${springfox-swagger-ui.version}</version>
     </dependency>
 
     <dependency>
@@ -87,6 +100,13 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build-info</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.bsc.maven</groupId>

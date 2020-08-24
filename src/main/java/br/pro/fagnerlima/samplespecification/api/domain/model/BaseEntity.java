@@ -1,4 +1,4 @@
-package br.pro.fagnerlima.samplespecification.api.model;
+package br.pro.fagnerlima.samplespecification.api.domain.model;
 
 import java.io.Serializable;
 
