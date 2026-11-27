@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/root/.m2 chmod +x mvnw && ./mvnw -B -ntp package 
 FROM eclipse-temurin:21-jre AS production
 
 LABEL author="Fagner Lima" \
-      email="contato@fagnerlima.pro.br" \
+      email="contato@fagnerlima.com" \
       description="Sample project with Spring Specification Tools" \
       license="GPLv3"
 
