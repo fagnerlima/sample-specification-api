@@ -8,7 +8,7 @@
     <version>4.1.2</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
-  <groupId>br.pro.fagnerlima</groupId>
+  <groupId>com.fagnerlima</groupId>
   <artifactId>sample-specification-api</artifactId>
   <version>0.2.0</version>
   <name>sample-specification-api</name>

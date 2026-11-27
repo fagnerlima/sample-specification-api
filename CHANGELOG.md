@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - OpenAPI documentation with springdoc-openapi 3, with filters and pagination documented as query parameters.
 - The Docker image runs on Java 21 as a non-root user.
 - Maven Wrapper 3.3.4 with Maven 3.9.
+- Maven groupId and Java packages moved from `br.pro.fagnerlima` to `com.fagnerlima`, following the new domain.
 
 ### Fixed
 
