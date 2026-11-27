@@ -52,7 +52,7 @@
     </dependency>
 
     <dependency>
-      <groupId>com.github.fagnerlima</groupId>
+      <groupId>io.github.fagnerlima</groupId>
       <artifactId>spring-specification-tools</artifactId>
       <version>${spring-specification-tools.version}</version>
     </dependency>

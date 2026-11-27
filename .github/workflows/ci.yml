@@ -17,7 +17,7 @@ env:
   # TEMPORARY: spring-specification-tools 1.0.0 is not on Maven Central yet, so it is built from this commit.
   # Remove this variable and the two "spring-specification-tools" steps once 1.0.0 is released, and change the
   # Maven cache key (any pom.xml change does it) so no cached copy of this local build is restored.
-  SPRING_SPECIFICATION_TOOLS_SHA: 6af2d0657611b7c3d303401fee572e81141a4bb8
+  SPRING_SPECIFICATION_TOOLS_SHA: b47c14913c52aa035329d23f344aed8e3306e222
 
 jobs:
   build:

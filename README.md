@@ -33,12 +33,12 @@ Until then, install it in your local Maven repository from source, at the commit
 ```shell
 git clone https://github.com/fagnerlima/spring-specification-tools.git
 cd spring-specification-tools
-git checkout 6af2d0657611b7c3d303401fee572e81141a4bb8
+git checkout b47c14913c52aa035329d23f344aed8e3306e222
 ./mvnw -B -ntp -DskipTests -Drevision=1.0.0 install
 ```
 
 Maven never downloads a release again once it is in the local repository, so after 1.0.0 is released delete
-`~/.m2/repository/com/github/fagnerlima/spring-specification-tools/1.0.0` to use the published artifact.
+`~/.m2/repository/io/github/fagnerlima/spring-specification-tools/1.0.0` to use the published artifact.
 
 The Docker image build resolves its dependencies inside the container, so `docker compose up --build` only works once
 1.0.0 is on Maven Central. Until then, run the application with Maven as shown below.
