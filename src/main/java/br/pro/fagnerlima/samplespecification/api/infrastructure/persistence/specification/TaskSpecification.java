@@ -8,10 +8,13 @@ import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task;
 import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task.Status;
 import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task_;
 
-public class TaskSpecification {
+public final class TaskSpecification {
+
+    private TaskSpecification() {
+    }
 
     public static Specification<Task> hasTags() {
-        return Specification.where((root, query, criteriaBuilder) -> criteriaBuilder.isNotEmpty(root.get(Task_.TAGS)));
+        return (root, query, criteriaBuilder) -> criteriaBuilder.isNotEmpty(root.get(Task_.TAGS));
     }
 
     public static Specification<Task> withStatus(Status status) {

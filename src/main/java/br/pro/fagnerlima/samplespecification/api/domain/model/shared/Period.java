@@ -3,8 +3,8 @@ package br.pro.fagnerlima.samplespecification.api.domain.model.shared;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 public class Period implements Serializable {

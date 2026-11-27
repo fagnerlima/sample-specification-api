@@ -3,18 +3,19 @@ package br.pro.fagnerlima.samplespecification.api.infrastructure.persistence.rep
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaBuilder.In;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Order;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaBuilder.In;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Order;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -29,14 +30,14 @@ import br.pro.fagnerlima.samplespecification.api.domain.model.tag.Tag;
 import br.pro.fagnerlima.samplespecification.api.domain.model.tag.Tag_;
 import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task;
 import br.pro.fagnerlima.samplespecification.api.domain.model.task.Task_;
+import br.pro.fagnerlima.samplespecification.api.presentation.dto.task.DescriptionOrTagFilter;
 import br.pro.fagnerlima.samplespecification.api.presentation.dto.task.TaskFilter;
 
 public class TaskRepositoryImpl implements TaskRepositoryQuery {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public TaskRepositoryImpl(EntityManager entityManager) {
-        super();
         this.entityManager = entityManager;
     }
 
@@ -49,7 +50,7 @@ public class TaskRepositoryImpl implements TaskRepositoryQuery {
         query.distinct(true);
         query.where(createRestrictions(filter, builder, root));
 
-        if (pageable.getSort() != null) {
+        if (pageable.getSort().isSorted()) {
             query.orderBy(createOrders(builder, root, pageable));
         }
 
@@ -96,13 +97,31 @@ public class TaskRepositoryImpl implements TaskRepositoryQuery {
         }
 
         if (filter.getDescriptionOrTag() != null) {
-            Join<Task, Tag> tagJoin = root.join(Task_.TAGS);
-            predicates.add(builder.or(
-                    createLikeUnaccent(builder, root.get(Task_.DESCRIPTION), filter.getDescriptionOrTag().getDescription()),
-                    createLikeUnaccent(builder, tagJoin.get(Tag_.DESCRIPTION), filter.getDescriptionOrTag().getTagDescription())));
+            createDescriptionOrTagRestriction(filter.getDescriptionOrTag(), builder, root).ifPresent(predicates::add);
         }
 
         return predicates.toArray(Predicate[]::new);
+    }
+
+    private Optional<Predicate> createDescriptionOrTagRestriction(DescriptionOrTagFilter filter,
+            CriteriaBuilder builder, Root<Task> root) {
+        List<Predicate> alternatives = new ArrayList<>();
+
+        if (!StringUtils.isBlank(filter.getDescription())) {
+            alternatives.add(createLikeUnaccent(builder, root.get(Task_.DESCRIPTION), filter.getDescription()));
+        }
+
+        // Joins the tags only when filtering by their description, as SpecBuilder does for @SpecJoin fields.
+        if (!StringUtils.isBlank(filter.getTagDescription())) {
+            Join<Task, Tag> tagJoin = root.join(Task_.TAGS);
+            alternatives.add(createLikeUnaccent(builder, tagJoin.get(Tag_.DESCRIPTION), filter.getTagDescription()));
+        }
+
+        if (alternatives.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return Optional.of(builder.or(alternatives.toArray(Predicate[]::new)));
     }
 
     private void createRestrictionsPageable(TypedQuery<Task> typedQuery, Pageable pageable) {
@@ -142,7 +161,8 @@ public class TaskRepositoryImpl implements TaskRepositoryQuery {
 
         Predicate[] predicates = createRestrictions(filter, builder, root);
         criteria.where(predicates);
-        criteria.select(builder.count(root));
+        // Distinct, like the page query: joining many tags would otherwise count a task once per tag.
+        criteria.select(builder.countDistinct(root));
 
         return entityManager.createQuery(criteria).getSingleResult();
     }
