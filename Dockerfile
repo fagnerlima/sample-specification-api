@@ -1,5 +1,10 @@
-# Build Stage
-FROM openjdk:11.0.8-slim as build
+# Build stage
+FROM eclipse-temurin:21-jdk AS build
+
+# The Maven Wrapper verifies the checksum of the .zip distribution, which needs unzip.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -8,18 +13,25 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-RUN chmod +x mvnw & ./mvnw clean install -DskipTests
+# The cache mount keeps Maven and the dependencies between builds, so a source change does not download them again.
+RUN --mount=type=cache,target=/root/.m2 chmod +x mvnw && ./mvnw -B -ntp package -DskipTests
 
-# Production Stage
-FROM openjdk:11.0.8-slim as production
+# Runtime stage
+FROM eclipse-temurin:21-jre AS production
 
 LABEL author="Fagner Lima" \
       email="contato@fagnerlima.pro.br" \
       description="Sample project with Spring Specification Tools" \
       license="GPLv3"
 
-COPY --from=build /app/target/sample-specification-api-0.1.0.jar /app/
+RUN groupadd --system app && useradd --system --gid app --no-create-home app
 
-ENTRYPOINT ["java", "-jar", "/app/sample-specification-api-0.1.0.jar"]
+WORKDIR /app
+
+COPY --from=build /app/target/sample-specification-api.jar app.jar
+
+USER app
 
 EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
