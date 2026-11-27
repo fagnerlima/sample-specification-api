@@ -33,7 +33,7 @@ Until then, install it in your local Maven repository from source, at the commit
 ```shell
 git clone https://github.com/fagnerlima/spring-specification-tools.git
 cd spring-specification-tools
-git checkout b47c14913c52aa035329d23f344aed8e3306e222
+git checkout 1a81cb0ebddfb1cedb14cd8df2271bb1c3c93148
 ./mvnw -B -ntp -DskipTests -Drevision=1.0.0 install
 ```
 
