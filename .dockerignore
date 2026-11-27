@@ -1,0 +1,6 @@
+.git
+.github
+.docker-volumes
+.idea
+.vscode
+target
